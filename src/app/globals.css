@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fbfbf9;
+  --foreground: #1c1c1c;
+  --muted: #8e8e8e;
+  --gold: #d4af37;
+  --gold-light: #f9f1e7;
+  --gold-dark: #aa8c2c;
+  --panel: #ffffff;
+  --border: #e8e8e4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #fcfcfc;
+    --muted: #a3a3a3;
+    --gold: #d4af37;
+    --gold-light: #1f1b13;
+    --gold-dark: #f0c95d;
+    --panel: #141414;
+    --border: #262626;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-panel: var(--panel);
+  --color-border: var(--border);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+}
+
+body {
+  font-family: var(--font-sans), sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif), serif;
+}
+
+/* Clean scrollbar utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
