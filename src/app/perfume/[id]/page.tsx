@@ -41,12 +41,13 @@ export default async function PerfumeDetailPage({ params }: { params: { id: stri
           {/* Left Column: Image Gallery (Sticky) */}
           <div className="relative">
             <div className="md:sticky md:top-32 space-y-4">
-              <div className="relative aspect-[4/5] w-full bg-panel">
+              <div className="relative aspect-[4/5] w-full bg-[#f7f5f2]">
                  <Image 
                    src={perfume.image} 
                    alt={perfume.name} 
                    fill 
-                   className="object-cover"
+                   unoptimized
+                   className="object-contain p-6"
                    priority
                  />
               </div>
@@ -89,13 +90,36 @@ export default async function PerfumeDetailPage({ params }: { params: { id: stri
                 {perfume.description}
               </p>
               
-              <div className="text-3xl font-serif text-gold-dark mb-10">
-                ${perfume.price}
+              <div className="space-y-3">
+                <p className="text-xs uppercase tracking-[0.2em] text-muted mb-4">Dónde Comprarlo</p>
+                <a 
+                  href={`https://www.sephora.com.mx/search?q=${encodeURIComponent(perfume.brand + ' ' + perfume.name)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-between bg-foreground text-background py-4 px-6 uppercase tracking-widest text-sm hover:bg-black/80 transition-colors border border-foreground"
+                >
+                  <span>Ver en Sephora México</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a 
+                  href={`https://www.liverpool.com.mx/tienda?s=${encodeURIComponent(perfume.brand + ' ' + perfume.name)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-between bg-transparent text-foreground py-4 px-6 uppercase tracking-widest text-sm hover:bg-panel transition-colors border border-border"
+                >
+                  <span>Ver en Liverpool</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a 
+                  href={`https://www.elpalaciodehierro.com/buscar?q=${encodeURIComponent(perfume.brand + ' ' + perfume.name)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-between bg-transparent text-foreground py-4 px-6 uppercase tracking-widest text-sm hover:bg-panel transition-colors border border-border"
+                >
+                  <span>Ver en Palacio de Hierro</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
               </div>
-              
-              <button className="w-full bg-foreground text-background py-5 uppercase tracking-widest text-sm hover:bg-black/80 transition-colors border border-foreground">
-                Añadir al Carrito
-              </button>
             </div>
 
             <div className="mb-8">

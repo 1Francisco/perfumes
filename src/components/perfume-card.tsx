@@ -34,7 +34,7 @@ export default function PerfumeCard({ perfume }: { perfume: Perfume }) {
           <span className="text-sm font-medium">{perfume.averageRating.toFixed(1)}</span>
         </div>
         
-        <p className="text-sm text-muted">${perfume.price}</p>
+        <p className="text-xs text-muted tracking-wider uppercase">{perfume.type}</p>
       </div>
     </motion.div>
   );
