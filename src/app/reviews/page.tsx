@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getRealPerfumes } from "@/lib/api";
 import { Perfume, Review } from "@/lib/mock-data";
+import { useLanguage } from "@/context/language-context";
 
 type ReviewWithPerfume = Review & { perfume: Perfume };
 
@@ -47,6 +48,7 @@ function StarRating({ rating }: { rating: number }) {
 export default function ReviewsPage() {
   const [reviews, setReviews] = useState<ReviewWithPerfume[]>([]);
   const [loading, setLoading] = useState(true);
+  const { t, locale } = useLanguage();
 
   useEffect(() => {
     getRealPerfumes().then((perfumes) => {
@@ -87,7 +89,7 @@ export default function ReviewsPage() {
   if (loading) {
     return (
       <div className="min-h-screen pt-32 pb-24 bg-background px-6 text-center text-muted">
-        Cargando reseñas…
+        {t("loading")}
       </div>
     );
   }
@@ -107,11 +109,10 @@ export default function ReviewsPage() {
           transition={{ duration: 0.8 }}
           className="mb-16"
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-gold-dark mb-4">Comunidad Etherial</p>
-          <h1 className="font-serif text-4xl md:text-6xl mb-6">Reseñas</h1>
+          <p className="text-sm uppercase tracking-[0.3em] text-gold-dark mb-4">{t("reviews.community")}</p>
+          <h1 className="font-serif text-4xl md:text-6xl mb-6">{t("reviews.title")}</h1>
           <p className="text-muted max-w-2xl leading-relaxed">
-            Las opiniones de nuestra comunidad sobre las fragancias más icónicas del mundo.
-            Cada reseña es experiencia real, criterio genuino y pasión por la perfumería.
+            {t("reviews.desc")}
           </p>
         </motion.div>
 
@@ -124,17 +125,17 @@ export default function ReviewsPage() {
         >
           <div className="text-center">
             <p className="font-serif text-3xl md:text-4xl text-gold-dark">{reviews.length}</p>
-            <p className="text-xs uppercase tracking-widest text-muted mt-2">Reseñas Totales</p>
+            <p className="text-xs uppercase tracking-widest text-muted mt-2">{t("reviews.total")}</p>
           </div>
           <div className="text-center border-x border-border">
             <p className="font-serif text-3xl md:text-4xl text-gold-dark">{avgRating}</p>
-            <p className="text-xs uppercase tracking-widest text-muted mt-2">Calificación Promedio</p>
+            <p className="text-xs uppercase tracking-widest text-muted mt-2">{t("reviews.avgRating")}</p>
           </div>
           <div className="text-center">
             <p className="font-serif text-3xl md:text-4xl text-gold-dark">
               {new Set(reviews.map((r) => r.perfume.brand)).size}
             </p>
-            <p className="text-xs uppercase tracking-widest text-muted mt-2">Marcas Reseñadas</p>
+            <p className="text-xs uppercase tracking-widest text-muted mt-2">{t("reviews.brandsReviewed")}</p>
           </div>
         </motion.div>
 
@@ -190,21 +191,21 @@ export default function ReviewsPage() {
                   </div>
                   <span className="text-sm font-medium">{review.userName}</span>
                 </div>
-                <span className="text-xs text-muted">{new Date(review.date).toLocaleDateString("es-ES", { year: "numeric", month: "long" })}</span>
+                <span className="text-xs text-muted">{new Date(review.date).toLocaleDateString(locale === "en" ? "en-US" : "es-ES", { year: "numeric", month: "long" })}</span>
               </div>
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-border">
                 <div className="text-center">
-                  <p className="text-xs text-muted uppercase tracking-wider">Duración</p>
+                  <p className="text-xs text-muted uppercase tracking-wider">{t("reviews.longevity")}</p>
                   <p className="text-sm font-medium mt-1">{review.longevity}/5</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-xs text-muted uppercase tracking-wider">Proyección</p>
+                  <p className="text-xs text-muted uppercase tracking-wider">{t("reviews.projection")}</p>
                   <p className="text-sm font-medium mt-1">{review.projection}/5</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-xs text-muted uppercase tracking-wider">Versatilidad</p>
+                  <p className="text-xs text-muted uppercase tracking-wider">{t("reviews.versatility")}</p>
                   <p className="text-sm font-medium mt-1">{review.versatility}/5</p>
                 </div>
               </div>
@@ -220,15 +221,15 @@ export default function ReviewsPage() {
           className="text-center mt-24 py-16 border-t border-border"
         >
           <MessageCircle size={32} className="mx-auto text-gold mb-6" />
-          <h2 className="font-serif text-3xl mb-4">¿Has probado alguno?</h2>
+          <h2 className="font-serif text-3xl mb-4">{t("reviews.tried")}</h2>
           <p className="text-muted mb-8 max-w-md mx-auto">
-            Visita la página de cualquier perfume y deja tu propia reseña para ayudar a la comunidad.
+            {t("reviews.triedDesc")}
           </p>
           <Link
             href="/search"
             className="inline-block bg-foreground text-background px-8 py-4 uppercase tracking-widest text-sm hover:bg-black/80 transition-colors"
           >
-            Explorar Colección
+            {t("home.cta")}
           </Link>
         </motion.div>
 

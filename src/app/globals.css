@@ -11,17 +11,15 @@
   --border: #e8e8e4;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #fcfcfc;
-    --muted: #a3a3a3;
-    --gold: #d4af37;
-    --gold-light: #1f1b13;
-    --gold-dark: #f0c95d;
-    --panel: #141414;
-    --border: #262626;
-  }
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fcfcfc;
+  --muted: #a3a3a3;
+  --gold: #d4af37;
+  --gold-light: #1f1b13;
+  --gold-dark: #f0c95d;
+  --panel: #141414;
+  --border: #262626;
 }
 
 @theme inline {
@@ -53,6 +51,6 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

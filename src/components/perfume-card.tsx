@@ -4,14 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Perfume } from "@/lib/mock-data";
-import { Star } from "lucide-react";
+import { Star, Heart, ArrowLeftRight } from "lucide-react";
+import { useWishlist } from "@/context/wishlist-context";
+import { useCompare } from "@/context/compare-context";
 
 export default function PerfumeCard({ perfume }: { perfume: Perfume }) {
+  const { toggleWishlist, isInWishlist } = useWishlist();
+  const { toggleCompare, isInCompare, compareCount } = useCompare();
+  const wishlisted = isInWishlist(perfume.id);
+  const comparing = isInCompare(perfume.id);
+
   return (
     <motion.div
       whileHover={{ y: -5 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="group flex flex-col cursor-pointer"
+      className="group flex flex-col cursor-pointer relative"
     >
       <Link href={`/perfume/${perfume.id}`} className="block relative overflow-hidden aspect-[4/5] bg-[#f7f5f2] rounded-sm">
         <Image 
@@ -24,6 +31,32 @@ export default function PerfumeCard({ perfume }: { perfume: Perfume }) {
         />
         <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </Link>
+
+      {/* Action Buttons Overlay */}
+      <div className="absolute top-3 right-3 flex flex-col space-y-2 z-10">
+        <button
+          onClick={(e) => { e.preventDefault(); toggleWishlist(perfume.id); }}
+          className={`w-9 h-9 flex items-center justify-center rounded-full backdrop-blur-md transition-all duration-200 ${
+            wishlisted
+              ? "bg-gold/90 text-white"
+              : "bg-white/80 text-muted hover:text-gold hover:bg-white"
+          }`}
+          aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
+        >
+          <Heart size={15} className={wishlisted ? "fill-current" : ""} />
+        </button>
+        <button
+          onClick={(e) => { e.preventDefault(); toggleCompare(perfume.id); }}
+          className={`w-9 h-9 flex items-center justify-center rounded-full backdrop-blur-md transition-all duration-200 opacity-0 group-hover:opacity-100 ${
+            comparing
+              ? "bg-foreground text-background"
+              : "bg-white/80 text-muted hover:text-foreground hover:bg-white"
+          } ${compareCount >= 3 && !comparing ? "pointer-events-none opacity-30" : ""}`}
+          aria-label={comparing ? "Remove from compare" : "Add to compare"}
+        >
+          <ArrowLeftRight size={14} />
+        </button>
+      </div>
       
       <div className="mt-6 flex flex-col items-center text-center px-2">
         <p className="text-xs tracking-[0.2em] text-muted uppercase mb-2">{perfume.brand}</p>
