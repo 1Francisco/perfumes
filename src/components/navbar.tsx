@@ -1,15 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { Search, Menu, X } from "lucide-react";
+import { Search, Menu, X, Sun, Moon, Heart, Globe } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { useTheme } from "@/context/theme-context";
+import { useWishlist } from "@/context/wishlist-context";
+import { useLanguage } from "@/context/language-context";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
+  const { wishlistCount } = useWishlist();
+  const { locale, setLocale, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,10 +26,13 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Descubrir", href: "/search" },
-    { name: "Marcas", href: "/search?brand=all" },
-    { name: "Reseñas", href: "/reviews" },
+    { name: t("nav.discover"), href: "/search" },
+    { name: t("nav.brands"), href: "/search?brand=all" },
+    { name: t("nav.reviews"), href: "/reviews" },
+    { name: t("nav.compare"), href: "/compare" },
   ];
+
+  const toggleLocale = () => setLocale(locale === "es" ? "en" : "es");
 
   return (
     <header
@@ -64,10 +73,42 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Search Icon */}
-        <Link href="/search" className="text-foreground hover:text-gold transition-colors">
-          <Search size={20} />
-        </Link>
+        {/* Right Actions */}
+        <div className="flex items-center space-x-3">
+          {/* Language Toggle */}
+          <button
+            onClick={toggleLocale}
+            className="flex items-center space-x-1 text-foreground hover:text-gold transition-colors"
+            aria-label="Toggle language"
+          >
+            <Globe size={16} />
+            <span className="text-xs font-medium uppercase">{locale}</span>
+          </button>
+
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="text-foreground hover:text-gold transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
+          {/* Wishlist */}
+          <Link href="/wishlist" className="relative text-foreground hover:text-gold transition-colors">
+            <Heart size={18} />
+            {wishlistCount > 0 && (
+              <span className="absolute -top-2 -right-2 w-4 h-4 bg-gold text-background text-[10px] font-bold rounded-full flex items-center justify-center">
+                {wishlistCount}
+              </span>
+            )}
+          </Link>
+
+          {/* Search */}
+          <Link href="/search" className="text-foreground hover:text-gold transition-colors">
+            <Search size={18} />
+          </Link>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -83,6 +124,23 @@ export default function Navbar() {
              {link.name}
            </Link>
           ))}
+          <Link
+            href="/wishlist"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-2xl font-serif text-foreground hover:text-gold transition-colors flex items-center space-x-3"
+          >
+            <Heart size={20} />
+            <span>{t("nav.wishlist")} {wishlistCount > 0 && `(${wishlistCount})`}</span>
+          </Link>
+          <div className="flex items-center space-x-4 pt-6 border-t border-border">
+            <button onClick={toggleLocale} className="flex items-center space-x-2 text-muted hover:text-foreground">
+              <Globe size={18} />
+              <span className="text-sm">{locale === "es" ? "English" : "Español"}</span>
+            </button>
+            <button onClick={toggleTheme} className="text-muted hover:text-foreground">
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </div>
         </div>
       )}
     </header>

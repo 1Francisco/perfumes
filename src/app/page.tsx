@@ -3,18 +3,27 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { MoveRight } from "lucide-react";
-import Hero3D from "@/components/hero-3d";
+import HeroParticles from "@/components/hero-particles";
 import PerfumeCard from "@/components/perfume-card";
 import { getRealPerfumes } from "@/lib/api";
+import { useEffect, useState } from "react";
+import { Perfume } from "@/lib/mock-data";
+import { useLanguage } from "@/context/language-context";
 
-export default async function Home() {
-  const perfumes = await getRealPerfumes();
+export default function Home() {
+  const [perfumes, setPerfumes] = useState<Perfume[]>([]);
+  const { t } = useLanguage();
+  
+  useEffect(() => {
+    getRealPerfumes().then(setPerfumes);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       
       {/* Hero Section */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
-        <Hero3D />
+        <HeroParticles />
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full text-center flex flex-col items-center pointer-events-none">
           <motion.p 
@@ -23,7 +32,7 @@ export default async function Home() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-sm md:text-md uppercase tracking-[0.3em] font-medium text-gold-dark mb-6"
           >
-            La Esencia de la Elegancia
+            {t("home.subtitle")}
           </motion.p>
           
           <motion.h1 
@@ -32,7 +41,7 @@ export default async function Home() {
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
             className="font-serif text-5xl md:text-7xl lg:text-8xl leading-tight mb-8"
           >
-            Descubre Tu <br/> <span className="italic text-muted/80">Firma Olfativa</span>
+            {t("home.title1")} <br/> <span className="italic text-muted/80">{t("home.title2")}</span>
           </motion.h1>
 
           <motion.div
@@ -45,7 +54,7 @@ export default async function Home() {
               href="/search" 
               className="inline-flex items-center space-x-3 border-b border-foreground pb-1 hover:text-gold hover:border-gold transition-colors duration-300 text-sm tracking-widest uppercase"
             >
-              <span>Explorar Colección</span>
+              <span>{t("home.cta")}</span>
               <MoveRight size={16} />
             </Link>
           </motion.div>
@@ -58,7 +67,7 @@ export default async function Home() {
           transition={{ delay: 1.5, duration: 1 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
         >
-          <span className="text-xs uppercase tracking-widest text-muted mb-2">Scroll</span>
+          <span className="text-xs uppercase tracking-widest text-muted mb-2">{t("home.scroll")}</span>
           <div className="w-[1px] h-12 bg-border relative overflow-hidden">
             <motion.div 
               animate={{ y: [0, 48] }}
@@ -80,10 +89,9 @@ export default async function Home() {
               transition={{ duration: 0.8 }}
               className="max-w-xl"
             >
-              <h2 className="font-serif text-4xl md:text-5xl mb-4">Colección Destacada</h2>
+              <h2 className="font-serif text-4xl md:text-5xl mb-4">{t("home.featured")}</h2>
               <p className="text-muted leading-relaxed">
-                Nuestra selección curada de las fragancias más deseadas y exclusivas del mundo. 
-                Obras maestras olfativas creadas por maestros perfumistas.
+                {t("home.featured.desc")}
               </p>
             </motion.div>
             
@@ -91,13 +99,13 @@ export default async function Home() {
               href="/search" 
               className="hidden md:inline-flex items-center space-x-2 text-sm tracking-widest uppercase hover:text-gold transition-colors"
             >
-              <span>Ver Todo</span>
+              <span>{t("home.viewAll")}</span>
               <MoveRight size={14} />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
-            {perfumes.map((perfume, idx) => (
+            {perfumes.slice(0, 8).map((perfume, idx) => (
               <motion.div
                 key={perfume.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -115,7 +123,7 @@ export default async function Home() {
               href="/search" 
               className="inline-flex items-center space-x-2 text-sm tracking-widest uppercase border-b border-foreground pb-1 hover:text-gold hover:border-gold transition-colors"
             >
-              <span>Ver Todo</span>
+              <span>{t("home.viewAll")}</span>
               <MoveRight size={14} />
             </Link>
           </div>
@@ -124,7 +132,6 @@ export default async function Home() {
 
       {/* Discovery Banner Section */}
       <section className="relative py-40 overflow-hidden bg-black text-white">
-        {/* Placeholder dark luxury abstract bg image */}
         <div className="absolute inset-0 z-0">
            <img 
              src="https://images.unsplash.com/photo-1616782298980-60b6b669ecb3?q=80&w=2000&auto=format&fit=crop" 
@@ -141,13 +148,13 @@ export default async function Home() {
             transition={{ duration: 1 }}
           >
             <h2 className="font-serif text-4xl md:text-6xl mb-8 leading-tight">
-              Encuentra la fragancia <br/><span className="italic text-gold-dark">perfecta</span> para cada estación.
+              {t("home.banner.title1")} <br/><span className="italic text-gold-dark">{t("home.banner.title2")}</span> {t("home.banner.title3")}
             </h2>
             <Link 
               href="/search" 
               className="inline-block bg-white text-black px-8 py-4 uppercase tracking-widest text-sm hover:bg-gold-dark hover:text-white transition-colors duration-300"
             >
-              Iniciar Búsqueda
+              {t("home.banner.cta")}
             </Link>
           </motion.div>
         </div>
