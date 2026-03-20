@@ -141,15 +141,19 @@ export default function Navbar() {
             <Heart size={20} />
             <span>{t("nav.wishlist")} {wishlistCount > 0 && `(${wishlistCount})`}</span>
           </Link>
-          <a
-            href="/etherial.apk"
-            download
-            className="text-2xl font-serif text-gold-dark hover:text-gold transition-colors flex items-center space-x-3 pt-2"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <span>📥 Descargar APK</span>
-          </a>
-          <div className="flex items-center space-x-4 pt-6 border-t border-border">
+          
+          <div className="pt-8 w-full">
+            <a
+              href="/etherial.apk"
+              download
+              className="w-full flex items-center justify-center bg-foreground text-background py-4 tracking-widest uppercase text-sm font-medium hover:bg-gold hover:text-white transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Descargar App
+            </a>
+          </div>
+
+          <div className="flex items-center space-x-4 pt-6 border-t border-border mt-auto">
             <button onClick={toggleLocale} className="flex items-center space-x-2 text-muted hover:text-foreground">
               <Globe size={18} />
               <span className="text-sm">{locale === "es" ? "English" : "Español"}</span>
