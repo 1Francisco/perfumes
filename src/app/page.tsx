@@ -132,16 +132,17 @@ export default function Home() {
 
       {/* Discovery Banner Section */}
       <section className="relative py-56 overflow-hidden bg-black text-white">
-        <div className="absolute inset-0 z-0 bg-black">
+        <div className="absolute inset-0 z-0">
            <motion.img 
              initial={{ scale: 1.05 }}
              whileInView={{ scale: 1 }}
              viewport={{ once: true }}
              transition={{ duration: 10, ease: "linear" }}
-             src="https://images.unsplash.com/photo-1616782298980-60b6b669ecb3?q=80&w=2000&auto=format&fit=crop" 
+             src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=2000&auto=format&fit=crop" 
              alt="Luxury background" 
-             className="w-full h-full object-cover opacity-50"
+             className="w-full h-full object-cover opacity-60"
            />
+           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
         </div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
