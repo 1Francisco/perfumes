@@ -41,7 +41,7 @@ export default function WishlistPage() {
         </motion.div>
 
         {perfumes.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-16">
             {perfumes.map((perfume, idx) => (
               <motion.div key={perfume.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: idx * 0.05 }}>
                 <PerfumeCard perfume={perfume} />

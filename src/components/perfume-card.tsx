@@ -58,9 +58,9 @@ export default function PerfumeCard({ perfume }: { perfume: Perfume }) {
         </button>
       </div>
       
-      <div className="mt-6 flex flex-col items-center text-center px-2">
-        <p className="text-xs tracking-[0.2em] text-muted uppercase mb-2">{perfume.brand}</p>
-        <h3 className="font-serif text-xl font-medium mb-2">{perfume.name}</h3>
+      <div className="mt-4 md:mt-6 flex flex-col items-center text-center px-1 md:px-2">
+        <p className="text-[10px] md:text-xs tracking-[0.2em] text-muted uppercase mb-1 md:mb-2">{perfume.brand}</p>
+        <h3 className="font-serif text-base md:text-xl font-medium mb-1 md:mb-2 leading-tight">{perfume.name}</h3>
         
         <div className="flex items-center space-x-1 mb-3">
           <Star className="w-3 h-3 fill-gold text-gold" />

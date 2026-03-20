@@ -104,7 +104,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-24">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 md:gap-x-12 md:gap-y-24">
             {perfumes.slice(0, 8).map((perfume, idx) => (
               <motion.div
                 key={perfume.id}
