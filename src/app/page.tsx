@@ -29,8 +29,8 @@ export default function Home() {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-sm md:text-md uppercase tracking-[0.3em] font-medium text-gold-dark mb-6"
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="text-xs uppercase tracking-[0.4em] font-medium text-gold-dark mb-8"
           >
             {t("home.subtitle")}
           </motion.p>
@@ -38,24 +38,24 @@ export default function Home() {
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-            className="font-serif text-5xl md:text-7xl lg:text-8xl leading-tight mb-8"
+            transition={{ duration: 1.5, delay: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="font-serif font-light text-5xl md:text-7xl lg:text-8xl leading-[1.1] mb-12"
           >
-            {t("home.title1")} <br/> <span className="italic text-muted/80">{t("home.title2")}</span>
+            {t("home.title1")} <br/> <span className="italic text-muted/60">{t("home.title2")}</span>
           </motion.h1>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+            transition={{ duration: 1.2, delay: 1, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="pointer-events-auto"
           >
             <Link 
               href="/search" 
-              className="inline-flex items-center space-x-3 border-b border-foreground pb-1 hover:text-gold hover:border-gold transition-colors duration-300 text-sm tracking-widest uppercase"
+              className="inline-flex items-center space-x-4 border border-foreground/20 px-10 py-5 hover:bg-foreground hover:text-background transition-all duration-500 text-xs tracking-[0.2em] uppercase"
             >
               <span>{t("home.cta")}</span>
-              <MoveRight size={16} />
+              <MoveRight size={14} className="opacity-70" />
             </Link>
           </motion.div>
         </div>
@@ -79,39 +79,39 @@ export default function Home() {
       </section>
 
       {/* Featured Perfumes Section */}
-      <section className="py-32 bg-panel">
+      <section className="py-48 bg-background">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-24">
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 1.2, ease: [0.21, 0.47, 0.32, 0.98] }}
               className="max-w-xl"
             >
-              <h2 className="font-serif text-4xl md:text-5xl mb-4">{t("home.featured")}</h2>
-              <p className="text-muted leading-relaxed">
+              <h2 className="font-serif font-light text-4xl md:text-5xl mb-6">{t("home.featured")}</h2>
+              <p className="text-muted/80 text-sm leading-relaxed font-light tracking-wide">
                 {t("home.featured.desc")}
               </p>
             </motion.div>
             
             <Link 
               href="/search" 
-              className="hidden md:inline-flex items-center space-x-2 text-sm tracking-widest uppercase hover:text-gold transition-colors"
+              className="hidden md:inline-flex items-center space-x-3 text-xs tracking-[0.2em] uppercase hover:text-gold transition-colors border-b border-transparent hover:border-gold pb-1"
             >
               <span>{t("home.viewAll")}</span>
-              <MoveRight size={14} />
+              <MoveRight size={14} className="opacity-70" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-24">
             {perfumes.slice(0, 8).map((perfume, idx) => (
               <motion.div
                 key={perfume.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                transition={{ duration: 1.2, delay: idx * 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
               >
                 <PerfumeCard perfume={perfume} />
               </motion.div>
@@ -131,28 +131,32 @@ export default function Home() {
       </section>
 
       {/* Discovery Banner Section */}
-      <section className="relative py-40 overflow-hidden bg-black text-white">
+      <section className="relative py-56 overflow-hidden bg-black text-white">
         <div className="absolute inset-0 z-0 bg-black">
-           <img 
+           <motion.img 
+             initial={{ scale: 1.05 }}
+             whileInView={{ scale: 1 }}
+             viewport={{ once: true }}
+             transition={{ duration: 10, ease: "linear" }}
              src="https://images.unsplash.com/photo-1616782298980-60b6b669ecb3?q=80&w=2000&auto=format&fit=crop" 
              alt="Luxury background" 
-             className="w-full h-full object-cover opacity-50 transition-opacity duration-700"
+             className="w-full h-full object-cover opacity-50"
            />
         </div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: [0.21, 0.47, 0.32, 0.98] }}
           >
-            <h2 className="font-serif text-4xl md:text-6xl mb-8 leading-tight">
+            <h2 className="font-serif font-light text-4xl md:text-6xl mb-12 leading-[1.1]">
               {t("home.banner.title1")} <br/><span className="italic text-gold-dark">{t("home.banner.title2")}</span> {t("home.banner.title3")}
             </h2>
             <Link 
               href="/search" 
-              className="inline-block bg-white text-black px-8 py-4 uppercase tracking-widest text-sm hover:bg-gold-dark hover:text-white transition-colors duration-300"
+              className="inline-block border border-white/40 bg-transparent backdrop-blur-sm text-white px-12 py-5 uppercase tracking-[0.2em] text-xs hover:bg-white hover:text-black transition-all duration-500"
             >
               {t("home.banner.cta")}
             </Link>

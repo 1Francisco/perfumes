@@ -20,7 +20,7 @@ export default function PerfumeCard({ perfume }: { perfume: Perfume }) {
       transition={{ duration: 0.4, ease: "easeOut" }}
       className="group flex flex-col cursor-pointer relative"
     >
-      <Link href={`/perfume/${perfume.id}`} className="block relative overflow-hidden aspect-[4/5] bg-neutral-100 dark:bg-neutral-800/80 rounded-sm">
+      <Link href={`/perfume/${perfume.id}`} className="block relative overflow-hidden aspect-[4/5] rounded-sm">
         <Image 
           src={perfume.image} 
           alt={perfume.name} 

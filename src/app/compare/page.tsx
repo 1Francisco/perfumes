@@ -68,7 +68,15 @@ export default function ComparePage() {
                 <div key={p.id} className="relative bg-panel border border-border p-6">
                   <button onClick={() => removeFromCompare(p.id)} className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-background border border-border rounded-full text-muted hover:text-foreground transition-colors z-10"><X size={14} /></button>
                   <Link href={`/perfume/${p.id}`} className="block">
-                    <div className="relative aspect-[4/5] bg-neutral-100 dark:bg-neutral-800/80 mb-4 rounded-sm"><Image src={p.image} alt={p.name} fill unoptimized className="object-contain p-4" /></div>
+                    <div className="relative aspect-[4/5] mb-4 rounded-sm">
+                      <Image 
+                        src={p.image} 
+                        alt={p.name} 
+                        fill 
+                        unoptimized
+                        className="object-contain p-4" 
+                      />
+                    </div>
                     <p className="text-xs uppercase tracking-[0.2em] text-muted mb-1">{p.brand}</p>
                     <h3 className="font-serif text-lg">{p.name}</h3>
                   </Link>
