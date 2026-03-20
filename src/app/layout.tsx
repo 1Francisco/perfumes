@@ -31,7 +31,18 @@ export const metadata: Metadata = {
     locale: "es_MX",
     siteName: "Etherial",
   },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Etherial",
+  },
+  formatDetection: {
+    telephone: false,
+  },
 };
+
+import PwaRegister from "@/components/pwa-register";
 
 export default function RootLayout({
   children,
@@ -44,6 +55,7 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} antialiased bg-background text-foreground min-h-screen flex flex-col`}
       >
         <Providers>
+          <PwaRegister />
           <Navbar />
           <main className="flex-1">
             {children}

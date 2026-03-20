@@ -20,7 +20,7 @@ export default function PerfumeCard({ perfume }: { perfume: Perfume }) {
       transition={{ duration: 0.4, ease: "easeOut" }}
       className="group flex flex-col cursor-pointer relative"
     >
-      <Link href={`/perfume/${perfume.id}`} className="block relative overflow-hidden aspect-[4/5] bg-[#f7f5f2] rounded-sm">
+      <Link href={`/perfume/${perfume.id}`} className="block relative overflow-hidden aspect-[4/5] bg-neutral-100 dark:bg-neutral-800/80 rounded-sm">
         <Image 
           src={perfume.image} 
           alt={perfume.name} 
@@ -39,7 +39,7 @@ export default function PerfumeCard({ perfume }: { perfume: Perfume }) {
           className={`w-9 h-9 flex items-center justify-center rounded-full backdrop-blur-md transition-all duration-200 ${
             wishlisted
               ? "bg-gold/90 text-white"
-              : "bg-white/80 text-muted hover:text-gold hover:bg-white"
+              : "bg-background/80 text-muted hover:text-gold hover:bg-background"
           }`}
           aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
         >
@@ -50,7 +50,7 @@ export default function PerfumeCard({ perfume }: { perfume: Perfume }) {
           className={`w-9 h-9 flex items-center justify-center rounded-full backdrop-blur-md transition-all duration-200 opacity-0 group-hover:opacity-100 ${
             comparing
               ? "bg-foreground text-background"
-              : "bg-white/80 text-muted hover:text-foreground hover:bg-white"
+              : "bg-background/80 text-muted hover:text-foreground hover:bg-background"
           } ${compareCount >= 3 && !comparing ? "pointer-events-none opacity-30" : ""}`}
           aria-label={comparing ? "Remove from compare" : "Add to compare"}
         >

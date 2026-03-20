@@ -33,7 +33,7 @@ export default function CompareBar() {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
-        className="fixed bottom-0 left-0 right-0 z-50 bg-panel/95 backdrop-blur-md border-t border-border shadow-2xl p-4"
+        className="fixed bottom-0 left-0 right-0 z-50 bg-panel/95 backdrop-blur-md border-t border-border shadow-2xl p-4 pb-[calc(1rem+env(safe-area-inset-bottom))]"
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
@@ -43,7 +43,7 @@ export default function CompareBar() {
             <div className="flex items-center space-x-3">
               {perfumes.map((p) => (
                 <div key={p.id} className="relative flex items-center space-x-2 bg-background border border-border px-3 py-2">
-                  <div className="relative w-8 h-10 bg-[#f7f5f2] flex-shrink-0">
+                  <div className="relative w-8 h-10 bg-neutral-100 dark:bg-neutral-800/80 flex-shrink-0 rounded-sm">
                     <Image src={p.image} alt={p.name} fill unoptimized className="object-contain" />
                   </div>
                   <span className="text-xs font-medium max-w-[100px] truncate hidden sm:block">{p.name}</span>
@@ -68,7 +68,7 @@ export default function CompareBar() {
             {compareCount >= 2 && (
               <Link
                 href="/compare"
-                className="bg-foreground text-background px-6 py-3 text-xs uppercase tracking-widest hover:bg-gold transition-colors"
+                className="bg-foreground text-background px-6 py-3 text-xs uppercase tracking-widest hover:bg-gold hover:text-white transition-colors"
               >
                 {t("compare.bar")}
               </Link>

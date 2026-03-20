@@ -132,11 +132,11 @@ export default function Home() {
 
       {/* Discovery Banner Section */}
       <section className="relative py-40 overflow-hidden bg-black text-white">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 bg-black">
            <img 
              src="https://images.unsplash.com/photo-1616782298980-60b6b669ecb3?q=80&w=2000&auto=format&fit=crop" 
              alt="Luxury background" 
-             className="w-full h-full object-cover opacity-40 mix-blend-luminosity"
+             className="w-full h-full object-cover opacity-50 transition-opacity duration-700"
            />
         </div>
         

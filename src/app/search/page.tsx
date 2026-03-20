@@ -171,7 +171,7 @@ function SearchContent({ perfumes }: { perfumes: Perfume[] }) {
               </div>
               <FilterSidebar />
               <div className="mt-12 sticky bottom-0 bg-background pt-4 pb-2">
-                 <button onClick={() => setShowMobileFilters(false)} className="w-full bg-foreground text-background py-4 tracking-widest uppercase text-sm">
+                 <button onClick={() => setShowMobileFilters(false)} className="w-full bg-foreground text-background py-4 tracking-widest uppercase text-sm hover:bg-gold hover:text-white transition-colors">
                    {t("search.apply")} ({filteredPerfumes.length})
                  </button>
               </div>

@@ -96,7 +96,7 @@ export default function ReviewSection({ initialReviews }: { initialReviews: Revi
 
             <button 
               onClick={() => setShowForm(!showForm)}
-              className="w-full mt-12 bg-foreground text-background py-4 uppercase tracking-widest text-sm hover:bg-black/80 transition-colors"
+              className="w-full mt-12 bg-foreground text-background py-4 uppercase tracking-widest text-sm hover:bg-gold hover:text-white transition-colors"
             >
               {showForm ? "Cancelar Reseña" : "Escribir Reseña"}
             </button>

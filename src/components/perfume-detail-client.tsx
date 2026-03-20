@@ -36,7 +36,7 @@ export default function PerfumeDetailClient({ perfume }: { perfume: Perfume }) {
           {/* Left Column: Image Gallery (Sticky) */}
           <div className="relative">
             <div className="md:sticky md:top-32 space-y-4">
-              <div className="relative aspect-[4/5] w-full bg-[#f7f5f2]">
+              <div className="relative aspect-[4/5] w-full bg-neutral-100 dark:bg-neutral-800/80 rounded-sm">
                  <Image 
                    src={perfume.image} 
                    alt={perfume.name} 
@@ -91,7 +91,7 @@ export default function PerfumeDetailClient({ perfume }: { perfume: Perfume }) {
                   href={`https://www.sephora.com.mx/search?q=${encodeURIComponent(perfume.brand + ' ' + perfume.name)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between bg-foreground text-background py-4 px-6 uppercase tracking-widest text-sm hover:bg-black/80 transition-colors border border-foreground"
+                  className="w-full flex items-center justify-between bg-foreground text-background py-4 px-6 uppercase tracking-widest text-sm hover:bg-gold hover:text-white hover:border-gold transition-colors border border-foreground"
                 >
                   <span>{t("detail.sephora")}</span>
                   <ExternalLinkIcon />
@@ -100,7 +100,7 @@ export default function PerfumeDetailClient({ perfume }: { perfume: Perfume }) {
                   href={`https://www.liverpool.com.mx/tienda?s=${encodeURIComponent(perfume.brand + ' ' + perfume.name)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between bg-transparent text-foreground py-4 px-6 uppercase tracking-widest text-sm hover:bg-panel transition-colors border border-border"
+                  className="w-full flex items-center justify-between bg-transparent text-foreground py-4 px-6 uppercase tracking-widest text-sm hover:bg-gold hover:text-white hover:border-gold transition-colors border border-border"
                 >
                   <span>{t("detail.liverpool")}</span>
                   <ExternalLinkIcon />
@@ -109,7 +109,7 @@ export default function PerfumeDetailClient({ perfume }: { perfume: Perfume }) {
                   href={`https://www.elpalaciodehierro.com/buscar?q=${encodeURIComponent(perfume.brand + ' ' + perfume.name)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between bg-transparent text-foreground py-4 px-6 uppercase tracking-widest text-sm hover:bg-panel transition-colors border border-border"
+                  className="w-full flex items-center justify-between bg-transparent text-foreground py-4 px-6 uppercase tracking-widest text-sm hover:bg-gold hover:text-white hover:border-gold transition-colors border border-border"
                 >
                   <span>{t("detail.palacio")}</span>
                   <ExternalLinkIcon />

@@ -161,7 +161,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full bg-foreground text-background py-4 uppercase tracking-widest text-sm hover:bg-black/80 transition-colors flex items-center justify-center space-x-2"
+                  className="w-full bg-foreground text-background py-4 uppercase tracking-widest text-sm hover:bg-gold hover:text-white transition-colors flex items-center justify-center space-x-2"
                 >
                   <span>Enviar Mensaje</span>
                   <Send size={16} />

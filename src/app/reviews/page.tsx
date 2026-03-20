@@ -152,7 +152,7 @@ export default function ReviewsPage() {
             >
               {/* Perfume Info */}
               <Link href={`/perfume/${review.perfume.id}`} className="flex items-center space-x-4 mb-6 group">
-                <div className="relative w-16 h-20 bg-[#f7f5f2] flex-shrink-0">
+                <div className="relative w-16 h-20 bg-neutral-100 dark:bg-neutral-800/80 flex-shrink-0 rounded-sm">
                   <Image
                     src={review.perfume.image}
                     alt={review.perfume.name}
@@ -227,7 +227,7 @@ export default function ReviewsPage() {
           </p>
           <Link
             href="/search"
-            className="inline-block bg-foreground text-background px-8 py-4 uppercase tracking-widest text-sm hover:bg-black/80 transition-colors"
+            className="inline-block bg-foreground text-background px-8 py-4 uppercase tracking-widest text-sm hover:bg-gold hover:text-white transition-colors"
           >
             {t("home.cta")}
           </Link>

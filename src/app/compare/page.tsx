@@ -57,7 +57,7 @@ export default function ComparePage() {
             <ArrowLeftRight size={48} className="mx-auto text-border mb-6" />
             <h2 className="font-serif text-2xl mb-4">{t("compare.select")}</h2>
             <p className="text-muted mb-8 max-w-md mx-auto">{t("compare.selectInstructions")}</p>
-            <Link href="/search" className="inline-block bg-foreground text-background px-8 py-4 uppercase tracking-widest text-sm hover:bg-gold transition-colors">
+            <Link href="/search" className="inline-block bg-foreground text-background px-8 py-4 uppercase tracking-widest text-sm hover:bg-gold hover:text-white transition-colors">
               {t("home.cta")}
             </Link>
           </motion.div>
@@ -68,7 +68,7 @@ export default function ComparePage() {
                 <div key={p.id} className="relative bg-panel border border-border p-6">
                   <button onClick={() => removeFromCompare(p.id)} className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-background border border-border rounded-full text-muted hover:text-foreground transition-colors z-10"><X size={14} /></button>
                   <Link href={`/perfume/${p.id}`} className="block">
-                    <div className="relative aspect-[4/5] bg-[#f7f5f2] mb-4"><Image src={p.image} alt={p.name} fill unoptimized className="object-contain p-4" /></div>
+                    <div className="relative aspect-[4/5] bg-neutral-100 dark:bg-neutral-800/80 mb-4 rounded-sm"><Image src={p.image} alt={p.name} fill unoptimized className="object-contain p-4" /></div>
                     <p className="text-xs uppercase tracking-[0.2em] text-muted mb-1">{p.brand}</p>
                     <h3 className="font-serif text-lg">{p.name}</h3>
                   </Link>

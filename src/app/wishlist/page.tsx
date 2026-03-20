@@ -53,7 +53,7 @@ export default function WishlistPage() {
             <Heart size={48} className="mx-auto text-border mb-6" />
             <h2 className="font-serif text-2xl mb-4">{t("wishlist.empty")}</h2>
             <p className="text-muted mb-8 max-w-md mx-auto">{t("wishlist.emptyDesc")}</p>
-            <Link href="/search" className="inline-flex items-center space-x-2 bg-foreground text-background px-8 py-4 uppercase tracking-widest text-sm hover:bg-gold transition-colors">
+            <Link href="/search" className="inline-flex items-center space-x-2 bg-foreground text-background px-8 py-4 uppercase tracking-widest text-sm hover:bg-gold hover:text-white transition-colors">
               <ArrowLeft size={16} /><span>{t("wishlist.explore")}</span>
             </Link>
           </motion.div>

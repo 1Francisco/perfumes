@@ -37,6 +37,7 @@ export default function Footer() {
               <li><Link href="/contact" className="text-sm text-muted hover:text-gold transition-colors">{t("footer.contact")}</Link></li>
               <li><Link href="/terms" className="text-sm text-muted hover:text-gold transition-colors">{t("footer.terms")}</Link></li>
               <li><Link href="/privacy" className="text-sm text-muted hover:text-gold transition-colors">{t("footer.privacy")}</Link></li>
+              <li className="pt-2"><a href="/etherial.apk" download className="text-sm text-gold hover:text-white transition-colors font-medium">📥 Descargar App (APK)</a></li>
             </ul>
           </div>
 

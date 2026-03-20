@@ -39,8 +39,8 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b border-transparent",
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-border shadow-sm py-3"
-          : "bg-transparent py-5"
+          ? "bg-background/80 backdrop-blur-md border-border shadow-sm py-3 pt-[calc(0.75rem+env(safe-area-inset-top))]"
+          : "bg-transparent py-5 pt-[calc(1.25rem+env(safe-area-inset-top))]"
       )}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -108,6 +108,15 @@ export default function Navbar() {
           <Link href="/search" className="text-foreground hover:text-gold transition-colors">
             <Search size={18} />
           </Link>
+
+          {/* Download APK Desktop */}
+          <a
+            href="/etherial.apk"
+            download
+            className="hidden lg:flex items-center space-x-2 bg-gold/10 text-gold-dark hover:bg-gold hover:text-white px-4 py-2 text-xs font-bold uppercase tracking-widest transition-colors rounded-sm ml-4"
+          >
+            <span>APK</span>
+          </a>
         </div>
       </div>
 
@@ -132,6 +141,14 @@ export default function Navbar() {
             <Heart size={20} />
             <span>{t("nav.wishlist")} {wishlistCount > 0 && `(${wishlistCount})`}</span>
           </Link>
+          <a
+            href="/etherial.apk"
+            download
+            className="text-2xl font-serif text-gold-dark hover:text-gold transition-colors flex items-center space-x-3 pt-2"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <span>📥 Descargar APK</span>
+          </a>
           <div className="flex items-center space-x-4 pt-6 border-t border-border">
             <button onClick={toggleLocale} className="flex items-center space-x-2 text-muted hover:text-foreground">
               <Globe size={18} />
